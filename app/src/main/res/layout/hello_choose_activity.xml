@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/roll_choose_text"
+        android:layout_width="300dp"
+        android:layout_height="454dp"
+        android:layout_gravity="center"
+        android:src="@drawable/is_first" />
+
+    <Button
+        android:id="@+id/yes_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="110dp"
+        android:layout_marginLeft="110dp"
+        android:text="네, 처음입니다"
+        android:textSize="20dp"
+        android:backgroundTint="#4b8031"
+        android:fontFamily="@font/oseong_haneum_regular"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/no_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="110dp"
+        android:layout_marginLeft="110dp"
+        android:textSize="20dp"
+        android:text="아뇨,계정 있어요"
+        android:fontFamily="@font/oseong_haneum_regular"
+        android:backgroundTint="#4b8031"/>
+</LinearLayout>

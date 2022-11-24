@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="동네 설정"
+        android:textColor="@color/black"
+        android:fontFamily="@font/oseong_haneum_regular"
+        android:layout_marginBottom="50dp"/>
+
+    <ImageView
+        android:layout_width="206dp"
+        android:layout_height="191dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/map" />
+
+    <TextView
+        android:id="@+id/location_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="내 주소"
+        android:textColor="@color/black"
+        android:fontFamily="@font/oseong_haneum_regular"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/location_button"
+        android:layout_width="260dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#4b8031"
+        android:fontFamily="@font/oseong_haneum_regular"
+        android:textSize="18dp"
+        android:text="위치 설정" />
+
+    <Button
+        android:id="@+id/region_next_btn"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="75dp"
+        android:backgroundTint="#02483D"
+        android:fontFamily="@font/oseong_haneum_regular"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:text="다음" />
+
+</LinearLayout>
