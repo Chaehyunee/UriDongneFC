@@ -18,6 +18,9 @@ public class UserVO implements Serializable {
     @SerializedName("phone_number")
     private String phone_number;
 
+    @SerializedName("region")
+    private String region;
+
     @SerializedName("roll")
     private Boolean seller_auth;
 
@@ -54,6 +57,14 @@ public class UserVO implements Serializable {
 
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public Boolean getSeller_auth() {

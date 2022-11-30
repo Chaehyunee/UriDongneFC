@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 상단 뒤로가기, 제목 입력칸, 완료 버튼-->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:src="@drawable/previous_blue"
+            android:layout_gravity="left|center"
+            android:layout_marginLeft="10dp"/>
+
+        <EditText
+            android:layout_width="305dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:fontFamily="@font/oseong_haneum_regular"
+            android:gravity="center"
+            android:text="제목을 입력해 주세요"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/checked_blue"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="right|center"/>
+
+
+    </GridLayout>
+
+    <!-- 요일 text와 라디오버튼-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="요일"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/oseong_haneum_regular"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:text="월"
+                android:fontFamily="@font/oseong_haneum_regular"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:text="화"
+                android:fontFamily="@font/oseong_haneum_regular"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:text="수"
+                android:fontFamily="@font/oseong_haneum_regular"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:text="목"
+                android:fontFamily="@font/oseong_haneum_regular"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:text="금"
+                android:fontFamily="@font/oseong_haneum_regular"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:text="토"
+                android:fontFamily="@font/oseong_haneum_regular"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:text="일"
+                android:fontFamily="@font/oseong_haneum_regular"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- 시간대 입력-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간대"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/oseong_haneum_regular"/>
+
+        <EditText
+            android:id="@+id/writing_team_time"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:fontFamily="@font/oseong_haneum_regular"
+            android:text="시간대를 입력해주세요"
+            android:textSize="15dp" />
+
+
+    </LinearLayout>
+
+
+    <!-- 구장 이름 입력-->
+    <LinearLayout
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/oseong_haneum_regular"
+            android:text="구장 이름"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <EditText
+            android:id="@+id/writing_team_field"
+            android:layout_width="277dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/oseong_haneum_regular"
+            android:text="주로 어디서 공을 차시나요?"
+            android:textSize="15dp" />
+
+
+    </LinearLayout>
+
+
+    <!-- 회비 관련 정보 입력-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회비"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/oseong_haneum_regular"/>
+
+        <EditText
+            android:id="@+id/writing_team_money"
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:fontFamily="@font/oseong_haneum_regular"
+            android:text="회비에 대해서 설명해주세요"
+            android:textSize="15dp" />
+
+
+    </LinearLayout>
+
+
+    <!-- 팀에 대한 설명글 입력-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/oseong_haneum_regular"
+            android:text="설명"
+            android:textColor="@color/black"
+            android:layout_marginBottom="15dp"
+            android:textSize="18dp" />
+
+        <EditText
+            android:id="@+id/team_story"
+            android:layout_width="358dp"
+            android:layout_height="271dp"
+            android:layout_gravity="center"
+            android:background="@drawable/textbox_design"
+            android:ems="10"
+            android:gravity="left"
+            android:hint="팀에 대한 정보를 들려주세요 "
+            android:inputType="textMultiLine"
+            android:padding="20dp"
+            android:scrollHorizontally="true" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -12,20 +12,20 @@
         android:layout_gravity="center_vertical">
 
         <ImageView
-            android:id="@+id/team_preview_img"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/team"
-            android:layout_margin="8dp"
+            android:id="@+id/player_preview_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/person"
+            android:layout_margin="5dp"
             android:layout_gravity="center_vertical"/>
 
         <TextView
-            android:id="@+id/team_preview_team_name"
+            android:id="@+id/player_preview_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="가좌FC"
+            android:text="홍길동"
             android:textSize="17dp"
             android:textColor="@color/black"/>
 
@@ -38,13 +38,13 @@
         android:layout_marginTop="5dp">
 
         <TextView
-            android:id="@+id/team_preview_title"
+            android:id="@+id/player_preview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="14dp"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="축구에 열정 있으신 분 오세요~"
+            android:text="함께할 팀 찾고 있습니다!"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"/>
 
@@ -59,25 +59,25 @@
         android:layout_marginBottom="10dp">
 
         <TextView
-            android:id="@+id/team_preview_day"
+            android:id="@+id/player_preview_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="14dp"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="요일 : 월, 회, 수, 목, 금, 토, 일"
+            android:text="가능한 요일 : 금, 토, 일"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:layout_marginRight="20dp"/>
 
         <TextView
-            android:id="@+id/team_preview_time"
+            android:id="@+id/player_preview_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="14dp"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="시간대 : 오후 4시 ~ 6시"
+            android:text="나이 : 43세"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"/>
 
