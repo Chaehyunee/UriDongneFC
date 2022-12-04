@@ -3,57 +3,61 @@ package com.example.uridongnefc;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-
-import androidx.annotation.Nullable;
 
 public class SplashActivity extends Activity {
 
-    Handler handler = new Handler();
+    protected void onCreate(Bundle savedInstanceState) {
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MyApplication application = (MyApplication) getApplication();
+        try{
 
-        Boolean firstCheckFlag;
-        firstCheckFlag = PreferenceManager.getBoolean(SplashActivity.this, "first_check_flag");
-
-        String Auto_Login = PreferenceManager.getString(SplashActivity.this,"user_id");
-
-        Log.d("test check flag : ", firstCheckFlag.toString());
-        Log.d("test check flag : ", Auto_Login.toString());
+            Thread.sleep(2000);
 
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        }catch (InterruptedException e) {
 
-                Intent intent;
+            e.printStackTrace();
 
-                if(!Auto_Login.isEmpty())
-                {
-                    intent = intent = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }
-                else if(firstCheckFlag == true)
-                {
-                    intent = new Intent(SplashActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
-                else
-                {
-                    intent = new Intent(SplashActivity.this, HelloChooseActivity.class);
-                    startActivity(intent);
-                }
+        }
+
+
+        Intent intent=new Intent(this, HelloChooseActivity.class);
+
+        startActivity(intent);
+
+        finish();
 
 
 
-                finish();
-            }
-        },3000);
 
     }
+
 }
+
+
+
+//첫번째 시도
+
+//
+//public class SplashActivity extends AppCompatActivity {
+//
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+//        super.onCreate(savedInstanceState, persistentState);
+//
+//        setContentView(R.layout.activity_splash);
+//
+////        moveMain(1);	//1초 후 main activity 로 넘어감
+//
+//
+//        //new Intent(현재 context, 이동할 activity)
+//        Intent intent = new Intent(SplashActivity.this, HelloChooseActivity.class);
+//
+//        startActivity(intent);    //intent 에 명시된 액티비티로 이동
+//
+//        finish();    //현재 액티비티 종료
+//
+//
+//    }
+//}

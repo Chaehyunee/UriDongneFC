@@ -15,6 +15,7 @@
             android:layout_height="40dp"
             android:src="@drawable/previous_blue"
             android:layout_gravity="left|center"
+            android:clickable="true"
             android:layout_marginLeft="10dp"/>
 
         <EditText
@@ -33,6 +34,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/checked_blue"
+            android:clickable="true"
             android:layout_marginRight="10dp"
             android:layout_gravity="right|center"/>
 
@@ -54,7 +56,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="요일"
+                android:text="가능한 요일"
                 android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/oseong_haneum_regular"/>
@@ -66,6 +68,7 @@
             android:layout_height="wrap_content">
 
             <CheckBox
+                android:id="@+id/player_mon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -75,6 +78,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/player_tue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -84,6 +88,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/player_wed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -93,6 +98,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/player_thu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -102,6 +108,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/player_fri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -111,6 +118,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/player_sat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -120,6 +128,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/player_sun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -149,7 +158,7 @@
             android:fontFamily="@font/oseong_haneum_regular"/>
 
         <EditText
-            android:id="@+id/writing_team_time"
+            android:id="@+id/writing_player_time"
             android:layout_width="288dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
@@ -161,7 +170,7 @@
     </LinearLayout>
 
 
-    <!-- 구장 이름 입력-->
+    <!-- 나이 입력-->
     <LinearLayout
         android:layout_width="356dp"
         android:layout_height="wrap_content"
@@ -173,24 +182,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="구장 이름"
+            android:text="나이"
             android:textColor="@color/black"
             android:textSize="18dp" />
 
         <EditText
-            android:id="@+id/writing_team_field"
+            android:id="@+id/writing_player_age"
             android:layout_width="277dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="주로 어디서 공을 차시나요?"
+            android:text="나이를 적어주세요 ex)31세, 40대 중반"
             android:textSize="15dp" />
 
 
     </LinearLayout>
 
 
-    <!-- 회비 관련 정보 입력-->
+    <!-- 희망 포지션 입력-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -201,19 +210,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="회비"
+            android:text="희망 포지션"
             android:textSize="18dp"
             android:textColor="@color/black"
             android:fontFamily="@font/oseong_haneum_regular"/>
 
-        <EditText
-            android:id="@+id/writing_team_money"
-            android:layout_width="305dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
-            android:fontFamily="@font/oseong_haneum_regular"
-            android:text="회비에 대해서 설명해주세요"
-            android:textSize="15dp" />
+
+        <Spinner
+            android:id="@+id/player_position_spinner"
+            android:layout_width="200dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"/>
 
 
     </LinearLayout>
@@ -244,7 +251,8 @@
             android:background="@drawable/textbox_design"
             android:ems="10"
             android:gravity="left"
-            android:hint="팀에 대한 정보를 들려주세요 "
+            android:hint="자유롭게 소개글을 적어주세요\n\nex) 자신의 실력, 회식 가능 여부, 경력, \n선출 여부, 가까운 구장 등 "
+            android:lineSpacingExtra="2dp"
             android:inputType="textMultiLine"
             android:padding="20dp"
             android:scrollHorizontally="true" />

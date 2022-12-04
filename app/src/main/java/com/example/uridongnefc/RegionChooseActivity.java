@@ -8,6 +8,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -33,18 +34,25 @@ public class RegionChooseActivity extends AppCompatActivity {
     private double longitude;
     private double latitude;
 
-    /** ReverseGeoCoding API KEY **/
+
+/** ReverseGeoCoding API KEY **/
+
     String APIKEY_ID = "hgdo31f2qg";
     String APIKEY = "cMNNoOKZKpqez7CHzDWHJ80PTjQbuE4whqLIItmP";
 
-    /** Retrofit **/
+
+/** Retrofit **/
+
     Retrofit retrofit = NaverApiClient.getNaverApiClient();
     ReverseGeocodingInterface reverseGeocodingInterface = retrofit.create(ReverseGeocodingInterface.class);
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.region_choose_activity);
+
+        Log.d("ㅇ", "Region Choose Activity 까지 성공");
 
         location_button = (Button) findViewById(R.id.location_button);
         location_text = (TextView) findViewById(R.id.location_text);

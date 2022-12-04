@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-/** 채팅 화면 구현을 위한 DataList Adapter입니다 **/
+/** 메인 화면 구현을 위한 DataList Adapter입니다 **/
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private ArrayList<PostItem> myDataList = null;

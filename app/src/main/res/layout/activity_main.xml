@@ -51,7 +51,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/eggong_chat_recycler_view"
+        android:id="@+id/main_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -66,6 +66,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#37498f"
         android:layout_gravity="right"
+        android:src="@drawable/edit_white"
         android:layout_margin="15dp"/>
 
 </LinearLayout>

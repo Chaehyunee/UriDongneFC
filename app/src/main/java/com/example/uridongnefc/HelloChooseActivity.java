@@ -3,6 +3,7 @@ package com.example.uridongnefc;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,9 +21,6 @@ public class HelloChooseActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.hello_choose_activity);
-
-        Intent intent=getIntent();
-        user_address = intent.getStringExtra("user_address");
 
         yes_btn = (Button) findViewById(R.id.yes_button);
         no_btn = (Button) findViewById(R.id.no_button);

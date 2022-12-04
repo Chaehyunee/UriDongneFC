@@ -66,6 +66,7 @@
             android:layout_height="wrap_content">
 
             <CheckBox
+                android:id="@+id/team_mon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -75,6 +76,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/team_tue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -84,6 +86,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/team_wed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -93,6 +96,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/team_thu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -102,6 +106,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/team_fri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -111,6 +116,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/team_sat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -120,6 +126,7 @@
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
             <CheckBox
+                android:id="@+id/team_sun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
@@ -127,7 +134,6 @@
                 android:textSize="18dp"
                 android:text="일"
                 android:fontFamily="@font/oseong_haneum_regular"/>
-
         </LinearLayout>
 
     </LinearLayout>
