@@ -1,5 +1,6 @@
 package com.example.uridongnefc;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -7,14 +8,11 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -23,7 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class RegionChooseActivity extends AppCompatActivity {
+public class RegionChooseActivity extends Activity {
 
     private Button location_button;
     private Button region_next_btn;
@@ -35,24 +33,21 @@ public class RegionChooseActivity extends AppCompatActivity {
     private double latitude;
 
 
-/** ReverseGeoCoding API KEY **/
+    /** ReverseGeoCoding API KEY **/
 
     String APIKEY_ID = "hgdo31f2qg";
     String APIKEY = "cMNNoOKZKpqez7CHzDWHJ80PTjQbuE4whqLIItmP";
 
-
-/** Retrofit **/
+    /** Retrofit **/
 
     Retrofit retrofit = NaverApiClient.getNaverApiClient();
     ReverseGeocodingInterface reverseGeocodingInterface = retrofit.create(ReverseGeocodingInterface.class);
 
-
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        setContentView(R.layout.region_choose_activity);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        Log.d("ㅇ", "Region Choose Activity 까지 성공");
+        setContentView(R.layout.region_choose_activity);
 
         location_button = (Button) findViewById(R.id.location_button);
         location_text = (TextView) findViewById(R.id.location_text);
@@ -90,26 +85,14 @@ public class RegionChooseActivity extends AppCompatActivity {
                                 ReverseGeocoding tmp = response.body();
                                 Result result= tmp.results.get(0);
 
-                                if(result.getLand().getNumber2().isEmpty())
-                                {
-                                    region = result.getRegion().getArea1().getName() + " " +
-                                            result.getRegion().getArea2().getName() + " " +
-                                            result.getRegion().getArea3().getName() + " " +
-                                            result.getRegion().getArea4().getName() +
-                                            result.getLand().getNumber1();
-                                }
-                                else
-                                {
-                                    region = result.getRegion().getArea1().getName() + " " +
-                                            result.getRegion().getArea2().getName() + " " +
-                                            result.getRegion().getArea3().getName() + " " +
-                                            result.getRegion().getArea4().getName() +
-                                            result.getLand().getNumber1() + "-" +
-                                            result.getLand().getNumber2();
-                                }
-
+                                region = result.getRegion().getArea1().getName() + " " +
+                                        result.getRegion().getArea2().getName() + " " +
+                                        result.getRegion().getArea3().getName();
 
                                 location_text.setText(region);
+
+                                region = result.getRegion().getArea3().getName();
+
 
                             }
 
@@ -137,7 +120,6 @@ public class RegionChooseActivity extends AppCompatActivity {
             }
         });
 
+    }
 
-
-        }
 }

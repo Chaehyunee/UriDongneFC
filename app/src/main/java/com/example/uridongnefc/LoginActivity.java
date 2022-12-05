@@ -1,23 +1,28 @@
 package com.example.uridongnefc;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
+
+    /** firebase Auth 연결 **/
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
     private EditText id;
     private EditText pw;
@@ -30,8 +35,8 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        Retrofit retrofit = ApiClient.getApiClient();
-        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        /** 로그인 firebase Auth 연결 **/
+        firebaseAuth = FirebaseAuth.getInstance();
 
         id = (EditText) findViewById(R.id.Login_id);
         pw = (EditText) findViewById(R.id.Login_password);
@@ -53,38 +58,45 @@ public class LoginActivity extends Activity {
                 String user_id = id.getText().toString().trim();
                 String user_pw = pw.getText().toString().trim();
 
-                UserVO user = new UserVO();
-                user.setId(user_id);
-                user.setPw(user_pw);
+                if (!user_id.equals("")&&!user_pw.equals("")) {
 
-                Call<UserVO> call = apiInterface.login(user);
-                call.enqueue(new Callback<UserVO>() {
+                    /** 로그인 진행 **/
+                    loginUser(user_id, user_pw);
+
+                }
+                else
+                {
+                    Toast.makeText(LoginActivity.this, "이메일과 비밀번호를 입력해주세요", Toast.LENGTH_LONG).show();
+                }
+
+                firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
                     @Override
-                    public void onResponse(Call<UserVO> call, Response<UserVO> response) {
-                        UserVO get_user_info = response.body();
-
-                        if(!get_user_info.getId().equals("null"))
-                        {
-                            MyApplication.user_data = get_user_info;
-                            PreferenceManager.setString(LoginActivity.this,"user_id", get_user_info.getId());
-                            PreferenceManager.setString(LoginActivity.this,"user_pw", get_user_info.getPw());
-                            PreferenceManager.setString(LoginActivity.this,"user_name", get_user_info.getName());
-                            Log.d("로그인 성공",get_user_info.getId().toString());
+                    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                        if (user != null) {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
+                            finish();
+                        } else {
                         }
-                        else
-                        {
-                            Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
-                            Log.d("로그인 실패","fail");
-
-                        }
-
                     }
+                };
 
+            }
+
+            private void loginUser(String user_id, String user_pw) {
+
+                firebaseAuth.signInWithEmailAndPassword(user_id, user_pw).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onFailure(Call<UserVO> call, Throwable t) {
-                        Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // 로그인 성공
+                            Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                            firebaseAuth.addAuthStateListener(firebaseAuthListener);
+                        }else {
+                            // 로그인 실패
+                            Toast.makeText(LoginActivity.this, "아이디 또는 비밀번호가 일치하지 않습니다", Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
 

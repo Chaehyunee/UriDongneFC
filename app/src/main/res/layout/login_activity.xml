@@ -37,13 +37,16 @@
             <EditText
                 android:id="@+id/Login_id"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:ems="12"
                 android:fontFamily="@font/oseong_haneum_regular"
                 android:hint="E-mail"
-                android:inputType="textEmailAddress" />
+                android:textColorHint="#aaaaaa"
+                android:textColor="@color/black"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/text_underline_design" />
 
         </LinearLayout>
 
@@ -63,12 +66,15 @@
             <EditText
                 android:id="@+id/Login_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:ems="12"
                 android:fontFamily="@font/oseong_haneum_regular"
                 android:hint="비밀번호"
-                android:inputType="textPassword" />
+                android:textColorHint="#aaaaaa"
+                android:textColor="@color/black"
+                android:inputType="textPassword"
+                android:background="@drawable/text_underline_design" />
 
         </LinearLayout>
 

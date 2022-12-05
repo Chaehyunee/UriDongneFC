@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "568984429694",
+    "project_id": "uridongne-fc",
+    "storage_bucket": "uridongne-fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568984429694:android:25b327e55c8ec84a93242f",
+        "android_client_info": {
+          "package_name": "com.example.uridongnefc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568984429694-ujkks93bambs05rp3poumt86eje7vfrr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq14uUwHmMPlLl7yJoY_2nFNOrK0HEIGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568984429694-ujkks93bambs05rp3poumt86eje7vfrr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

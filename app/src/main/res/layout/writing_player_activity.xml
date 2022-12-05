@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <!-- 상단 뒤로가기, 제목 입력칸, 완료 버튼-->
     <GridLayout
@@ -26,8 +27,11 @@
             android:layout_marginRight="5dp"
             android:fontFamily="@font/oseong_haneum_regular"
             android:gravity="center"
-            android:text="제목을 입력해 주세요"
+            android:hint="제목을 입력해 주세요"
             android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textColorHint="#aaaaaa"
+            android:background="@drawable/text_underline_design"
             android:textSize="20dp" />
 
         <ImageView
@@ -75,7 +79,8 @@
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:text="월"
-                android:fontFamily="@font/oseong_haneum_regular"/>
+                android:fontFamily="@font/oseong_haneum_regular"
+                />
 
             <CheckBox
                 android:id="@+id/player_tue"
@@ -163,8 +168,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="시간대를 입력해주세요"
-            android:textSize="15dp" />
+            android:hint="시간대를 입력해주세요"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="#aaaaaa"
+            android:background="@drawable/text_underline_design"/>
 
 
     </LinearLayout>
@@ -192,7 +200,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="나이를 적어주세요 ex)31세, 40대 중반"
+            android:hint="나이를 적어주세요 ex)31세, 40대 중반"
+            android:textColor="@color/black"
+            android:textColorHint="#aaaaaa"
+            android:background="@drawable/text_underline_design"
             android:textSize="15dp" />
 
 

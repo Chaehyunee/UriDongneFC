@@ -20,6 +20,7 @@ public class RollChooseActivity  extends Activity {
 
         setContentView(R.layout.roll_choose_activity);
 
+        /** 동네 주소 받아오기 **/
         Intent intent=getIntent();
         region = intent.getStringExtra("region");
 
