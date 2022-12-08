@@ -40,7 +40,7 @@ public class RegistPlayerActivity extends AppCompatActivity {
     private String check_pw;
     private String player_name;
     private String user_phone_number;
-    private int roll;
+    private String roll;
 
     /** Firebase Authentication Setting **/
     private FirebaseAuth mAuth;
@@ -82,7 +82,7 @@ public class RegistPlayerActivity extends AppCompatActivity {
                 check_pw = regist_check.getText().toString().trim();
                 player_name =regist_player_name.getText().toString().trim();
                 user_phone_number =regist_phone_number.getText().toString().trim();
-                roll = 1; // team : 0, player : 1
+                roll = "player"; // team : 0, player : 1
 
                 if(user_email.equals(""))
                 {
@@ -153,7 +153,7 @@ public class RegistPlayerActivity extends AppCompatActivity {
                 // Add a new document with a generated ID
                 db.collection("users_info")
                         .document(user_email)
-                        .collection(region)
+                        .collection(user_email)
                         .add(user)
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override

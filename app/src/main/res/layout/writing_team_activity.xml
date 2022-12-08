@@ -12,6 +12,7 @@
         android:layout_marginTop="10dp">
 
         <ImageView
+            android:id="@+id/writing_team_back_btn"
             android:layout_width="35dp"
             android:layout_height="40dp"
             android:src="@drawable/previous_blue"
@@ -19,6 +20,7 @@
             android:layout_marginLeft="10dp"/>
 
         <EditText
+            android:id="@+id/writing_team_title"
             android:layout_width="305dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -26,7 +28,7 @@
             android:layout_marginRight="5dp"
             android:fontFamily="@font/oseong_haneum_regular"
             android:gravity="center"
-            android:text="제목을 입력해 주세요"
+            android:hint="제목을 입력해 주세요"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textColorHint="#aaaaaa"
@@ -34,9 +36,11 @@
             android:textSize="20dp" />
 
         <ImageView
+            android:id="@+id/writing_team_complete_btn"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/checked_blue"
+            android:clickable="true"
             android:layout_marginRight="10dp"
             android:layout_gravity="right|center"/>
 
@@ -263,7 +267,7 @@
             android:textSize="18dp" />
 
         <EditText
-            android:id="@+id/team_story"
+            android:id="@+id/writing_team_story"
             android:layout_width="358dp"
             android:layout_height="271dp"
             android:layout_gravity="center"
