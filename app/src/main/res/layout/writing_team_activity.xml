@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <!-- 상단 뒤로가기, 제목 입력칸, 완료 버튼-->
     <GridLayout
@@ -27,6 +28,9 @@
             android:gravity="center"
             android:text="제목을 입력해 주세요"
             android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textColorHint="#aaaaaa"
+            android:background="@drawable/text_underline_design"
             android:textSize="20dp" />
 
         <ImageView
@@ -55,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="요일"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/oseong_haneum_regular"/>
 
@@ -71,9 +75,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:text="월"
-                android:fontFamily="@font/oseong_haneum_regular"/>
+                android:fontFamily="@font/oseong_haneum_regular"
+                android:buttonTint="@color/black"/>
 
             <CheckBox
                 android:id="@+id/team_tue"
@@ -81,9 +86,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:text="화"
-                android:fontFamily="@font/oseong_haneum_regular"/>
+                android:fontFamily="@font/oseong_haneum_regular"
+                android:buttonTint="@color/black"/>
 
             <CheckBox
                 android:id="@+id/team_wed"
@@ -91,9 +97,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:text="수"
-                android:fontFamily="@font/oseong_haneum_regular"/>
+                android:fontFamily="@font/oseong_haneum_regular"
+                android:buttonTint="@color/black"/>
 
             <CheckBox
                 android:id="@+id/team_thu"
@@ -101,9 +108,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:text="목"
-                android:fontFamily="@font/oseong_haneum_regular"/>
+                android:fontFamily="@font/oseong_haneum_regular"
+                android:buttonTint="@color/black"/>
 
             <CheckBox
                 android:id="@+id/team_fri"
@@ -111,9 +119,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:text="금"
-                android:fontFamily="@font/oseong_haneum_regular"/>
+                android:fontFamily="@font/oseong_haneum_regular"
+                android:buttonTint="@color/black"/>
 
             <CheckBox
                 android:id="@+id/team_sat"
@@ -121,9 +130,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:text="토"
-                android:fontFamily="@font/oseong_haneum_regular"/>
+                android:fontFamily="@font/oseong_haneum_regular"
+                android:buttonTint="@color/black"/>
 
             <CheckBox
                 android:id="@+id/team_sun"
@@ -131,9 +141,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:text="일"
-                android:fontFamily="@font/oseong_haneum_regular"/>
+                android:fontFamily="@font/oseong_haneum_regular"
+                android:buttonTint="@color/black"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -150,7 +161,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="시간대"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:textColor="@color/black"
             android:fontFamily="@font/oseong_haneum_regular"/>
 
@@ -160,8 +171,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="시간대를 입력해주세요"
-            android:textSize="15dp" />
+            android:hint="시간대를 입력해주세요"
+            android:textSize="17dp"
+            android:textColor="@color/black"
+            android:textColorHint="#aaaaaa"
+            android:background="@drawable/text_underline_design"/>
 
 
     </LinearLayout>
@@ -181,7 +195,7 @@
             android:fontFamily="@font/oseong_haneum_regular"
             android:text="구장 이름"
             android:textColor="@color/black"
-            android:textSize="18dp" />
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/writing_team_field"
@@ -189,8 +203,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="주로 어디서 공을 차시나요?"
-            android:textSize="15dp" />
+            android:hint="주로 어디서 공을 차시나요?"
+            android:textSize="17dp"
+            android:textColor="@color/black"
+            android:textColorHint="#aaaaaa"
+            android:background="@drawable/text_underline_design" />
 
 
     </LinearLayout>
@@ -208,7 +225,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회비"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:textColor="@color/black"
             android:fontFamily="@font/oseong_haneum_regular"/>
 
@@ -218,8 +235,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="회비에 대해서 설명해주세요"
-            android:textSize="15dp" />
+            android:hint="회비에 대해서 설명해주세요"
+            android:textSize="17dp"
+            android:textColor="@color/black"
+            android:textColorHint="#aaaaaa"
+            android:background="@drawable/text_underline_design"/>
 
 
     </LinearLayout>
@@ -253,6 +273,8 @@
             android:hint="팀에 대한 정보를 들려주세요 "
             android:inputType="textMultiLine"
             android:padding="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#777777"
             android:scrollHorizontally="true" />
 
 

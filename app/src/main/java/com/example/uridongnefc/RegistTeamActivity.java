@@ -2,6 +2,7 @@ package com.example.uridongnefc;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,9 +13,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistTeamActivity extends AppCompatActivity {
 
@@ -37,6 +45,9 @@ public class RegistTeamActivity extends AppCompatActivity {
     /** Firebase Authentication Setting **/
     private FirebaseAuth mAuth;
 
+    /** Firebase Authentication Setting **/
+    private FirebaseFirestore db;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +57,9 @@ public class RegistTeamActivity extends AppCompatActivity {
 
         /** Firebase Auth 초기화 **/
         mAuth = FirebaseAuth.getInstance();
+
+        /** Firebase Store 초기화 **/
+        db = FirebaseFirestore.getInstance();
 
         /** 이전 화면에서 region 지역명 받아오기 **/
         Intent intent=getIntent();
@@ -99,6 +113,7 @@ public class RegistTeamActivity extends AppCompatActivity {
                 else
                 {
                     createAccount();
+                    storeTeamInfo();
                 }
 
 
@@ -125,6 +140,37 @@ public class RegistTeamActivity extends AppCompatActivity {
 
 
             }
+
+            /** 팀 관련 문서 생성  **/
+            private void storeTeamInfo() {
+                // Create a new user with a first and last name
+                Map<String, Object> user = new HashMap<>();
+                user.put("email", user_email);
+                user.put("name", team_name);
+                user.put("phone_number", user_phone_number);
+                user.put("region", region);
+                user.put("roll", roll); // team : 0, player : 1
+
+                // Add a new document with a generated ID
+                db.collection("users_info")
+                        .document(user_email)
+                        .collection(region)
+                        .add(user)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d("팀 계정 관련 문서 생성 성공", "DocumentSnapshot added with ID: " + documentReference.getId());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("팀 계정 관련 문서 생성  실패", "Error adding document", e);
+                            }
+                        });
+            }
+
+
         });
 
 
