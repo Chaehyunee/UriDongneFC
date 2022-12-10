@@ -252,6 +252,12 @@
                 android:fontFamily="@font/oseong_haneum_regular"
                 android:layout_marginLeft="20dp"/>
 
+<!--            <ListView
+                android:layout_width="140dp"
+                android:layout_height="20dp"
+                android:id="@+id/player_position_listview"
+                />-->
+
             <Spinner
                 android:id="@+id/player_position_spinner"
                 android:layout_width="40dp"
@@ -294,6 +300,7 @@
             android:inputType="textMultiLine"
             android:padding="20dp"
             android:textSize="20dp"
+            android:textColor="@color/black"
             android:scrollHorizontally="true"
             android:textColorHint="#777777"/>
 

@@ -39,6 +39,7 @@ public class HelloChooseActivity extends Activity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(HelloChooseActivity.this, RegionChooseActivity.class);
+                    intent.putExtra("pre_page", "HelloChoose");
                     startActivity(intent);
                     finish();
                 }

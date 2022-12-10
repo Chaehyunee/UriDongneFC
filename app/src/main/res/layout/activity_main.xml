@@ -32,6 +32,8 @@
                 android:layout_gravity="center_vertical"/>
 
             <ImageView
+                android:id="@+id/main_region_change_btn"
+                android:clickable="true"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_gravity="center"
@@ -40,6 +42,7 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/main_setting_btn"
             android:layout_width="25dp"
             android:layout_height="30dp"
             android:src="@drawable/settings"
@@ -53,11 +56,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="653dp"
         android:layout_weight="1"
-        android:padding="5dp"
         android:background="#eeeeee"
-        custom:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        android:padding="5dp"
+        custom:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

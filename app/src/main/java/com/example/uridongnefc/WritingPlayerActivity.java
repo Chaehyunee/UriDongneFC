@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class WritingPlayerActivity extends AppCompatActivity {
@@ -41,7 +43,7 @@ public class WritingPlayerActivity extends AppCompatActivity {
     private String player_title;
     private String player_time;
     private String player_age;
-    private String player_position;
+    private String player_position = "";
     private String player_story;
 
 
@@ -55,6 +57,8 @@ public class WritingPlayerActivity extends AppCompatActivity {
     private CheckBox player_sun;
     private String days = "";
 
+    /** position spinner setting **/
+    final String[] positions = {"골키퍼 (GK)", "수비수 (DF)", "미드필더 (MF)", "공격수 (FW)"};
 
     /** 지역명 받아오기 **/
     private String region;
@@ -63,6 +67,8 @@ public class WritingPlayerActivity extends AppCompatActivity {
     /** Firebase Authentication Setting **/
     private FirebaseFirestore db;
 
+    private List<String> listview_items;
+    private ArrayAdapter<String> listview_adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,10 +86,44 @@ public class WritingPlayerActivity extends AppCompatActivity {
         writing_player_title = (EditText) findViewById(R.id.writing_player_title);
         writing_player_time = (EditText) findViewById(R.id.writing_player_time);
         writing_player_age = (EditText) findViewById(R.id.writing_player_age);
-        player_position_spinner = (Spinner) findViewById(R.id.player_position_spinner);
-        player_position_textview = findViewById(R.id.player_position_textview);
         writing_player_story = (EditText) findViewById(R.id.writing_player_story);
 
+
+        /** spinner Initialize **/
+        player_position_spinner = (Spinner) findViewById(R.id.player_position_spinner);
+        player_position_textview = (TextView) findViewById(R.id.player_position_textview);
+
+
+        /** 스피너와 리스트를 연결하기 위해 사용되는 어댑터 **/
+        ArrayAdapter<String> spinner_adapter=new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, positions);
+
+
+        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //스피너의 어댑터 지정
+        player_position_spinner.setAdapter(spinner_adapter);
+
+
+        player_position_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String str = adapterView.getItemAtPosition(i).toString();
+
+                if ( str != "")
+                    player_position = str;
+                    Log.d("test", "success" + str);
+                    player_position_textview.setText(player_position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        /** 요일 체크박스 연결 **/
         player_mon = (CheckBox) findViewById(R.id.player_mon);
         player_tue = (CheckBox) findViewById(R.id.player_tue);
         player_wed = (CheckBox) findViewById(R.id.player_wed);
@@ -96,8 +136,6 @@ public class WritingPlayerActivity extends AppCompatActivity {
         /** Firebase Store 초기화 **/
         db = FirebaseFirestore.getInstance();
 
-
-
         writing_player_back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,19 +146,6 @@ public class WritingPlayerActivity extends AppCompatActivity {
         writing_player_complete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                /** position spinner setting **/
-                final String[] positions = {"골키퍼 (GK)", "수비수 (DF)", "미드필더 (MF)", "공격수 (FW)"};
-
-
-                ArrayAdapter<String> adapter;
-                adapter = new ArrayAdapter<String>(WritingPlayerActivity.this,
-                        androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, positions);
-
-                adapter.setDropDownViewResource(com.google.android.material.R.layout.support_simple_spinner_dropdown_item);
-
-                player_position_spinner.setAdapter(adapter);
-
 
                 player_position = player_position_spinner.getSelectedItem().toString();
 
@@ -160,6 +185,7 @@ public class WritingPlayerActivity extends AppCompatActivity {
                     /** Player 게시물 저장 **/
                     setDayText();
                     savePlayerPost();
+                    finish();
                 }
             }
 
@@ -230,4 +256,19 @@ public class WritingPlayerActivity extends AppCompatActivity {
 
 
     }
+
+/*    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Log.d("WritingPlayerActivity", "onItemSelected");
+        adapterView.getItemAtPosition(i);
+        player_position = positions[i];
+        Toast.makeText(getApplicationContext(),
+                        positions[i],Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        Log.d("WritingPlayerActivity", "onNothingSelected");
+        player_position = positions[3]; //default : 공격수
+    }*/
 }

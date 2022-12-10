@@ -21,7 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class RegionChooseActivity extends Activity {
+public class RegionResetActivity extends Activity {
 
     private Button location_button;
     private Button region_next_btn;
@@ -62,7 +62,7 @@ public class RegionChooseActivity extends Activity {
             public void onClick(View view) {
                 if ( Build.VERSION.SDK_INT >= 23 &&
                         ContextCompat.checkSelfPermission( getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
-                    ActivityCompat.requestPermissions( RegionChooseActivity.this, new String[] {
+                    ActivityCompat.requestPermissions( RegionResetActivity.this, new String[] {
                             android.Manifest.permission.ACCESS_FINE_LOCATION}, 0 );
                 }
                 else{
@@ -113,7 +113,7 @@ public class RegionChooseActivity extends Activity {
         region_next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegionChooseActivity.this, RollChooseActivity.class);
+                Intent intent = new Intent(RegionResetActivity.this, MainActivity.class);
                 intent.putExtra("region", region);
                 startActivity(intent);
             }
