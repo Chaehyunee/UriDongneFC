@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/textbox_design"
+    android:backgroundTint="@color/white"
     android:layout_margin="10dp">
 
     <LinearLayout
@@ -13,8 +14,8 @@
 
         <ImageView
             android:id="@+id/team_preview_img"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/team"
             android:layout_margin="8dp"
             android:layout_gravity="center_vertical"/>
@@ -26,7 +27,7 @@
             android:layout_gravity="center_vertical"
             android:fontFamily="@font/oseong_haneum_regular"
             android:text="가좌FC"
-            android:textSize="17dp"
+            android:textSize="20dp"
             android:textColor="@color/black"/>
 
     </LinearLayout>
@@ -42,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="14dp"
+            android:textSize="18dp"
             android:fontFamily="@font/oseong_haneum_regular"
             android:text="축구에 열정 있으신 분 오세요~"
             android:layout_gravity="center_vertical"
@@ -63,24 +64,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="14dp"
+            android:textSize="18dp"
             android:fontFamily="@font/oseong_haneum_regular"
             android:text="요일 : 월, 회, 수, 목, 금, 토, 일"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:layout_marginRight="20dp"/>
 
+    </LinearLayout>
+
         <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="10dp"
             android:id="@+id/team_preview_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="14dp"
+            android:textSize="18dp"
             android:fontFamily="@font/oseong_haneum_regular"
             android:text="시간대 : 오후 4시 ~ 6시"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"/>
-
-    </LinearLayout>
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.uridongnefc;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +24,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class WritingPlayerActivity extends AppCompatActivity {
@@ -63,12 +63,13 @@ public class WritingPlayerActivity extends AppCompatActivity {
     /** 지역명 받아오기 **/
     private String region;
 
+    /** Player name 받아오기 **/
+    private String name;
+
 
     /** Firebase Authentication Setting **/
     private FirebaseFirestore db;
 
-    private List<String> listview_items;
-    private ArrayAdapter<String> listview_adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,6 +79,7 @@ public class WritingPlayerActivity extends AppCompatActivity {
         /** 이전 화면에서 region 받아오기 **/
         Intent intent = getIntent();
         region = intent.getStringExtra("region");
+        name = intent.getStringExtra("name");
 
 
         writing_player_back_btn = (ImageView) findViewById(R.id.writing_player_back_btn);
@@ -104,15 +106,15 @@ public class WritingPlayerActivity extends AppCompatActivity {
         //스피너의 어댑터 지정
         player_position_spinner.setAdapter(spinner_adapter);
 
-
+        /** position 선택에 따른 textview 문자 변경 **/
         player_position_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressLint("SuspiciousIndentation")
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String str = adapterView.getItemAtPosition(i).toString();
 
                 if ( str != "")
                     player_position = str;
-                    Log.d("test", "success" + str);
                     player_position_textview.setText(player_position);
             }
 
@@ -225,19 +227,20 @@ public class WritingPlayerActivity extends AppCompatActivity {
             /** Player 게시물 저장 **/
             private void savePlayerPost() {
 
-                // Create a new team_post with a first and last name
-                Map<String, Object> team_post = new HashMap<>();
-                team_post.put("roll","player");
-                team_post.put("title", player_title);
-                team_post.put("time", player_time);
-                team_post.put("age", player_age);
-                team_post.put("position", player_position);
-                team_post.put("story", player_story);
-                team_post.put("days", days);
+                // Create a new player_post with a first and last name
+                Map<String, Object> player_post = new HashMap<>();
+                player_post.put("roll","player");
+                player_post.put("title", player_title);
+                player_post.put("time", player_time);
+                player_post.put("age", player_age);
+                player_post.put("position", player_position);
+                player_post.put("story", player_story);
+                player_post.put("days", days);
+                player_post.put("name", name);
 
                 // Add a new document with a generated ID
                 db.collection(region)
-                        .add(team_post)
+                        .add(player_post)
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
@@ -256,19 +259,4 @@ public class WritingPlayerActivity extends AppCompatActivity {
 
 
     }
-
-/*    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Log.d("WritingPlayerActivity", "onItemSelected");
-        adapterView.getItemAtPosition(i);
-        player_position = positions[i];
-        Toast.makeText(getApplicationContext(),
-                        positions[i],Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-        Log.d("WritingPlayerActivity", "onNothingSelected");
-        player_position = positions[3]; //default : 공격수
-    }*/
 }

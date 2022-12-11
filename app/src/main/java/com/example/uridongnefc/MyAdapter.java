@@ -1,6 +1,7 @@
 package com.example.uridongnefc;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,23 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     {
         myDataList = dataList;
     }
+
+    /** Custom Listener **/
+    public interface OnItemClickListener
+    {
+        void onItemClick(int pos);
+    }
+
+    static private MyAdapter.OnItemClickListener onItemClickListener = null;
+
+    public void setOnItemClickListener(MyAdapter.OnItemClickListener listener)
+    {
+        this.onItemClickListener = listener;
+        Log.d("create onItem listener","make success");
+    }
+
+
+
 
     @NonNull
     @Override
@@ -46,14 +64,18 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position)
     {
         if(viewHolder instanceof TeamViewHolder)
-        {
-            ((TeamViewHolder) viewHolder).content.setText(myDataList.get(position).getContent());
+        { //team : 이름, 제목, 요일, 시간
+            ((TeamViewHolder) viewHolder).name.setText(myDataList.get(position).getName());
+            ((TeamViewHolder) viewHolder).content.setText(myDataList.get(position).getTitle());
+            ((TeamViewHolder) viewHolder).day.setText(myDataList.get(position).getDay());
+            ((TeamViewHolder) viewHolder).time.setText(myDataList.get(position).getTime());
         }
         else
-        {
+        { //player : 이름, 제목, 요일, 나이
             ((PlayerViewHolder) viewHolder).name.setText(myDataList.get(position).getName());
-            ((PlayerViewHolder) viewHolder).content.setText(myDataList.get(position).getContent());
-            ((PlayerViewHolder) viewHolder).time.setText(myDataList.get(position).getDay());
+            ((PlayerViewHolder) viewHolder).content.setText(myDataList.get(position).getTitle());
+            ((PlayerViewHolder) viewHolder).day.setText(myDataList.get(position).getDay());
+            ((PlayerViewHolder) viewHolder).age.setText(myDataList.get(position).getAge());
         }
     }
 
@@ -82,6 +104,21 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             content = itemView.findViewById(R.id.team_preview_title);
             day = itemView.findViewById(R.id.team_preview_day);
             time = itemView.findViewById(R.id.team_preview_time);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if(position!= RecyclerView.NO_POSITION)
+                    {
+                        if(onItemClickListener!=null)
+                        {
+                            onItemClickListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
         }
     }
 
@@ -89,7 +126,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         TextView name;
         TextView content;
         TextView day;
-        TextView time;
+        TextView age;
 
         PlayerViewHolder(View itemView)
         {
@@ -98,7 +135,22 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             name = itemView.findViewById(R.id.player_preview_name);
             content = itemView.findViewById(R.id.player_preview_title);
             day = itemView.findViewById(R.id.player_preview_day);
-            time = itemView.findViewById(R.id.player_preview_time);
+            age = itemView.findViewById(R.id.player_preview_age);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if(position!= RecyclerView.NO_POSITION)
+                    {
+                        if(onItemClickListener!=null)
+                        {
+                            onItemClickListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
         }
     }
 

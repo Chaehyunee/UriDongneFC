@@ -55,6 +55,9 @@ public class WritingTeamActivity extends AppCompatActivity {
     /** 지역명 받아오기 **/
     private String region;
 
+    /** Team name 받아오기 **/
+    private String name;
+
 
     /** Firebase Authentication Setting **/
     private FirebaseFirestore db;
@@ -68,6 +71,7 @@ public class WritingTeamActivity extends AppCompatActivity {
         /** 이전 화면에서 region 받아오기 **/
         Intent intent = getIntent();
         region = intent.getStringExtra("region");
+        name = intent.getStringExtra("name");
 
 
         writing_team_back_btn = (ImageView) findViewById(R.id.writing_team_back_btn);
@@ -139,7 +143,7 @@ public class WritingTeamActivity extends AppCompatActivity {
                     /** Team 게시물 저장 **/
                     setDayText();
                     saveTeamPost();
-
+                    finish();
                 }
             }
 
@@ -188,9 +192,10 @@ public class WritingTeamActivity extends AppCompatActivity {
                 team_post.put("money", team_money);
                 team_post.put("story", team_story);
                 team_post.put("days", days);
+                team_post.put("name", name);
 
                 // Add a new document with a generated ID
-                db.collection(region)
+                db.collection(region) //TODO 예외처리 : region 이 null인 경우
                         .add(team_post)
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override

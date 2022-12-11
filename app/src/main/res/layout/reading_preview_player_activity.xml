@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/textbox_design"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:backgroundTint="@color/white">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -26,7 +27,7 @@
             android:layout_gravity="center_vertical"
             android:fontFamily="@font/oseong_haneum_regular"
             android:text="홍길동"
-            android:textSize="17dp"
+            android:textSize="20dp"
             android:textColor="@color/black"/>
 
     </LinearLayout>
@@ -42,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="14dp"
+            android:textSize="18dp"
             android:fontFamily="@font/oseong_haneum_regular"
             android:text="함께할 팀 찾고 있습니다!"
             android:layout_gravity="center_vertical"
@@ -55,32 +56,35 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/player_preview_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="14dp"
+            android:textSize="18dp"
             android:fontFamily="@font/oseong_haneum_regular"
-            android:text="가능한 요일 : 금, 토, 일"
+            android:text="가능한 요일 : 월, 화, 수, 목, 금, 토, 일"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:layout_marginRight="20dp"/>
 
+
+    </LinearLayout>
+
         <TextView
-            android:id="@+id/player_preview_time"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/player_preview_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="14dp"
+            android:textSize="18dp"
             android:fontFamily="@font/oseong_haneum_regular"
             android:text="나이 : 43세"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"/>
-
-    </LinearLayout>
 
 </LinearLayout>

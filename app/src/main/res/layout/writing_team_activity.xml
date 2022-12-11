@@ -274,7 +274,7 @@
             android:background="@drawable/textbox_design"
             android:ems="10"
             android:gravity="left"
-            android:hint="팀에 대한 정보를 들려주세요 "
+            android:hint="자유롭게 설명을 적어주세요\n\n이런게 들어가면 좋아요! \n\n회식 유무, 팀 실력과 매너,\n선출 유무, 팀 주 연령대 등 "
             android:inputType="textMultiLine"
             android:padding="20dp"
             android:textColor="@color/black"

@@ -51,6 +51,8 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".WritingPlayerActivity"/>
         <activity android:name=".WritingTeamActivity"/>
+        <activity android:name=".ReadingPlayerActivity"/>
+        <activity android:name=".ReadingTeamActivity"/>
 
 
     </application>
