@@ -26,7 +26,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.concurrent.Executor;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
         dataList = new ArrayList<>();
 
 
+        /** xml 요소 **/
+        main_region_txt = (TextView) findViewById(R.id.main_region_txt);
+        main_region_change_btn = (ImageView) findViewById(R.id.main_region_change_btn);
+        main_setting_btn = (ImageView) findViewById(R.id.main_setting_btn);
+        RecyclerView ryv = findViewById(R.id.main_recycler_view);
+
+
         /** 이전 화면에서 email 받아오기 **/
         this.getIntentFromBeforeActivity();
 
@@ -71,16 +77,12 @@ public class MainActivity extends AppCompatActivity {
         /** Firebase Store 초기화 **/
         db = FirebaseFirestore.getInstance();
 
-        /** DB 내용 받아오기 **/
-        Executor executor = command -> {
-            Thread thread = new Thread(command);
-            thread.start();
-        };
+
 
         /** Firebase Store collection 선언 **/
         CollectionReference colRef = db.collection("users_info").document(email).collection(email);
 
-        /** Firebase Store 에서 사용자 region String, roll int 값 받아오기 **/
+        /** Firebase Store - 사용자 region, roll 받아오기 & 상단 주소명 변경 **/
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -101,7 +103,10 @@ public class MainActivity extends AppCompatActivity {
 
                                             Log.d("region, roll 받아오기", region + " & " + name + " & " + current_user_roll);
 
+                                            main_region_txt.setText(region);
+                                            break;
                                         }
+                                        Log.d("region, roll 받아오기", "document 존재하지 않음");
                                     }
                                 } else {
                                     Log.d("region, roll 받아오기", "실패");
@@ -116,22 +121,12 @@ public class MainActivity extends AppCompatActivity {
         t.start();
 
 
-
-        /** 상단 주소명 변경 **/
-        main_region_txt = (TextView) findViewById(R.id.main_region_txt);
-//        main_region_txt.setText(region);
-        main_region_txt.setText("가좌동");
-
-
-        /** 주소 변경 버튼 ------------ 수정 필요 TODO **/
-        main_region_change_btn = (ImageView) findViewById(R.id.main_region_change_btn);
+        /** 주소 변경 버튼 **/
         main_region_change_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RegionChooseActivity.class);
-                intent.putExtra("pre_page", "Main");
+                Intent intent = new Intent(MainActivity.this, RegionResetActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -142,9 +137,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         /** 리사이클러뷰 설정 **/
-        RecyclerView ryv = findViewById(R.id.main_recycler_view);
-
-
         LinearLayoutManager manager
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
 
@@ -160,8 +152,8 @@ public class MainActivity extends AppCompatActivity {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-
-                        CollectionReference colRef_ryv = db.collection("가좌동"); //TODO collection 경로 고치기
+                       
+                        CollectionReference colRef_ryv = db.collection("가좌동"); //TODO thread 문제 해결
                         colRef_ryv.addSnapshotListener(new EventListener<QuerySnapshot>() {
                             @Override
                             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -248,18 +240,17 @@ public class MainActivity extends AppCompatActivity {
         writing_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent;
                 if (current_user_roll.equals("player")){ //roll -> player : 1, team : 0
-                    Intent intent = new Intent(MainActivity.this, WritingPlayerActivity.class);
-                    intent.putExtra("region", region);
-                    intent.putExtra("name", name);
-                    startActivity(intent);
+                    intent = new Intent(MainActivity.this, WritingPlayerActivity.class);
                 }
                 else{
-                    Intent intent = new Intent(MainActivity.this, WritingTeamActivity.class);
-                    intent.putExtra("region", region);
-                    intent.putExtra("name", name);
-                    startActivity(intent);
+                    intent = new Intent(MainActivity.this, WritingTeamActivity.class);
                 }
+                intent.putExtra("region", region);
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
+                startActivity(intent);
             }
         });
     }

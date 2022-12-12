@@ -109,7 +109,7 @@ public class RegionResetActivity extends Activity {
                 }
             });
 
-        /** 역할 선택 페이지로 넘기기 **/
+        /** 메인화면으로 넘기기 **/
         region_next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

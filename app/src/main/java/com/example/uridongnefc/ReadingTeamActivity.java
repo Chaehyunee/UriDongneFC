@@ -14,9 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Map;
 
@@ -44,6 +47,8 @@ public class ReadingTeamActivity extends AppCompatActivity {
     private String field;
     private String money;
     private String story;
+    private String email;
+    private String phone_number;
 
     /** Firebase Store result **/
     private Map<String, Object> result;
@@ -99,14 +104,6 @@ public class ReadingTeamActivity extends AppCompatActivity {
             }
         });
 
-        /** 연락하기 버튼 **/
-        team_contact_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO contact 버튼 연결 - 팀
-            }
-        });
-
 
         /** Firebase Store 에서 게시물 정보 받아오기 **/
         Thread t = new Thread(new Runnable() {
@@ -132,6 +129,7 @@ public class ReadingTeamActivity extends AppCompatActivity {
                                             field = (String) result.get("field");
                                             money = (String) result.get("money");
                                             story = (String) result.get("story");
+                                            email = (String) result.get("email");
 
 
                                             /** TextView 값 넣기 **/
@@ -163,6 +161,60 @@ public class ReadingTeamActivity extends AppCompatActivity {
 
         t.start();
 
+
+        /** 연락하기 버튼 **/
+        team_contact_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                /** Firebase Store 에서 전화번호 정보 받아오기 **/
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                /** Firebase Store collection 선언 **/
+                                CollectionReference colRef = db.collection("users_info").document(email).collection(email);
+
+                                if (email != null) {
+                                    colRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                                    if (document.exists()) {
+                                                        result = document.getData();
+                                                        phone_number = (String) result.get("phone_number");
+
+                                                        Log.d("phone_number 받아오기", phone_number);
+
+                                                        Intent intent = new Intent(ReadingTeamActivity.this, ContactPopupActivity.class);
+                                                        intent.putExtra("phone_number", phone_number);
+                                                        startActivity(intent);
+                                                    }
+                                                }
+                                            } else {
+                                                Log.d("phone_number 받아오기", "실패");
+                                            }
+                                        }
+                                    });
+                                }
+                                else {
+                                    Log.w("Email is", "null");
+                                }
+
+
+                            }
+                        });
+                    }
+                });
+
+                t.start();
+
+            }
+        });
 
 
     }

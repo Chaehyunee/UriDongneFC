@@ -41,7 +41,6 @@ public class HelloChooseActivity extends Activity {
                     Intent intent = new Intent(HelloChooseActivity.this, RegionChooseActivity.class);
                     intent.putExtra("pre_page", "HelloChoose");
                     startActivity(intent);
-                    finish();
                 }
             });
 
@@ -50,7 +49,6 @@ public class HelloChooseActivity extends Activity {
                 public void onClick(View view) {
                     Intent intent = new Intent(HelloChooseActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    finish();
                 }
             });
 //        }

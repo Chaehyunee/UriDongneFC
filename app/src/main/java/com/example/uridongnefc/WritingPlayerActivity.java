@@ -63,8 +63,9 @@ public class WritingPlayerActivity extends AppCompatActivity {
     /** 지역명 받아오기 **/
     private String region;
 
-    /** Player name 받아오기 **/
+    /** Player name, email 받아오기 **/
     private String name;
+    private String email;
 
 
     /** Firebase Authentication Setting **/
@@ -80,6 +81,7 @@ public class WritingPlayerActivity extends AppCompatActivity {
         Intent intent = getIntent();
         region = intent.getStringExtra("region");
         name = intent.getStringExtra("name");
+        email = intent.getStringExtra("email");
 
 
         writing_player_back_btn = (ImageView) findViewById(R.id.writing_player_back_btn);
@@ -96,7 +98,7 @@ public class WritingPlayerActivity extends AppCompatActivity {
         player_position_textview = (TextView) findViewById(R.id.player_position_textview);
 
 
-        /** 스피너와 리스트를 연결하기 위해 사용되는 어댑터 **/
+        /** 스피너와 텍스트뷰를 연결하기 위해 사용되는 어댑터 **/
         ArrayAdapter<String> spinner_adapter=new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, positions);
 
@@ -237,6 +239,7 @@ public class WritingPlayerActivity extends AppCompatActivity {
                 player_post.put("story", player_story);
                 player_post.put("days", days);
                 player_post.put("name", name);
+                player_post.put("email", email);
 
                 // Add a new document with a generated ID
                 db.collection(region)

@@ -45,6 +45,7 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".HelloChooseActivity"/>
         <activity android:name=".RegionChooseActivity"/>
+        <activity android:name=".RegionResetActivity"/>
         <activity android:name=".RollChooseActivity"/>
         <activity android:name=".RegistTeamActivity"/>
         <activity android:name=".RegistPlayerActivity"/>
@@ -53,6 +54,7 @@
         <activity android:name=".WritingTeamActivity"/>
         <activity android:name=".ReadingPlayerActivity"/>
         <activity android:name=".ReadingTeamActivity"/>
+        <activity android:name=".ContactPopupActivity" android:theme="@android:style/Theme.Dialog" />
 
 
     </application>
