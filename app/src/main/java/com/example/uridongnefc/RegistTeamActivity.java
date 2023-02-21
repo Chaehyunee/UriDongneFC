@@ -45,7 +45,7 @@ public class RegistTeamActivity extends AppCompatActivity {
     /** Firebase Authentication Setting **/
     private FirebaseAuth mAuth;
 
-    /** Firebase Authentication Setting **/
+    /** Firebase Store Setting **/
     private FirebaseFirestore db;
 
 

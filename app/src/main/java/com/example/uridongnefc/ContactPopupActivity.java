@@ -29,8 +29,6 @@ public class ContactPopupActivity extends Activity {
         super.onCreate(savedInstanceState);
         /** 타이틀바 없애기 **/
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-
         setContentView(R.layout.contact_popup_activity);
 
 
